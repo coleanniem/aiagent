@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Embedded ElevenLabs Convai Widget</title>
+  </head>
+  <body>
+    <elevenlabs-convai agent-id="agent_7401k75awbx1fmn8mksde5rcqacy"></elevenlabs-convai>
+    <script src="https://unpkg.com/@elevenlabs/convai-widget-embed" async type="text/javascript"></script>
+  </body>
+</html>
