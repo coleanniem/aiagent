@@ -1,76 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Embedded ElevenLabs Convai Widget</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Voice AI Chatbot Widget</title>
   <style>
-    :root { box-sizing: border-box; }
-    *,*::before,*::after { box-sizing: inherit; }
-    html,body { height: 100%; margin: 0; padding: 0; }
-    body {
-      width: 100%;
-      min-height: 100vh;
-      margin: 0;
-      padding: 12px;
-      font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-      background: transparent;
-    }
+    body { margin: 0; padding: 0; background: transparent; }
     .wrap {
       width: 100%;
-      max-width: 900px;
-      margin: 0 auto;
+      max-width: 800px;
+      margin: 30px auto;
       box-sizing: border-box;
+      padding: 20px;
     }
     elevenlabs-convai {
       display: block;
       width: 100%;
-      min-height: 220px;
-      box-sizing: border-box;
+      min-height: 240px;
+      border: none;
       background: transparent;
-      border: 0;
-    }
-    .loader {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 18px;
-      color: #222;
-      font-size: 14px;
     }
   </style>
 </head>
 <body>
   <div class="wrap">
-    <div id="loader" class="loader">Loading chat widget…</div>
-    <elevenlabs-convai id="convai" agent-id="agent_7401k75awbx1fmn8mksde5rcqacy"></elevenlabs-convai>
+    <elevenlabs-convai agent-id="agent_7401k75awbx1fmn8mksde5rcqacy"></elevenlabs-convai>
   </div>
   <script src="https://unpkg.com/@elevenlabs/convai-widget-embed" async type="text/javascript"></script>
-  <script>
-    (function () {
-      const loader = document.getElementById('loader');
-      const widget = document.getElementById('convai');
-      function sendHeight() {
-        const height = document.documentElement.scrollHeight;
-        try { parent.postMessage({ type: 'embed-height', height }, '*'); } catch (e) { /* ignore */ }
-      }
-      if (window.customElements && customElements.whenDefined) {
-        customElements.whenDefined('elevenlabs-convai').then(() => {
-          if (loader) loader.style.display = 'none';
-          sendHeight();
-        }).catch(() => {
-          if (loader) loader.style.display = 'none';
-          sendHeight();
-        });
-      } else {
-        setTimeout(() => { if (loader) loader.style.display = 'none'; sendHeight(); }, 2000);
-      }
-      let tries = 0;
-      const t = setInterval(() => { sendHeight(); tries++; if (tries > 8) clearInterval(t); }, 500);
-      const ro = new MutationObserver(sendHeight);
-      ro.observe(document.body, { childList: true, subtree: true, attributes: true });
-      window.__convaiEmbed = { sendHeight };
-    })();
-  </script>
 </body>
 </html>
