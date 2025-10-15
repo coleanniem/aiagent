@@ -3,27 +3,40 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Voice AI Chatbot Widget</title>
+  <title>Floating Voice AI Chatbot Widget</title>
   <style>
-    body { margin: 0; padding: 0; background: transparent; }
-    .wrap {
-      width: 100%;
-      max-width: 800px;
-      margin: 30px auto;
-      box-sizing: border-box;
-      padding: 20px;
+    html, body {
+      margin: 0; padding: 0; width: 100vw; height: 100vh;
+      background: transparent;
+    }
+    .floating-widget {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      z-index: 9999;
+      width: 350px;
+      max-width: 95vw;
+      min-height: 260px;
+      background: transparent;
+      box-shadow: none;
+      border: none;
+      /* Remove border and shadow, container is transparent */
     }
     elevenlabs-convai {
       display: block;
       width: 100%;
-      min-height: 240px;
-      border: none;
+      height: 440px;      /* Tweak for visual appearance */
+      min-height: 260px;
       background: transparent;
+      border: none;
+      box-sizing: border-box;
+      border-radius: 14px; /* very soft rounded corners, optional */
+      /* No frame/border/shadow here */
     }
   </style>
 </head>
 <body>
-  <div class="wrap">
+  <div class="floating-widget">
     <elevenlabs-convai agent-id="agent_7401k75awbx1fmn8mksde5rcqacy"></elevenlabs-convai>
   </div>
   <script src="https://unpkg.com/@elevenlabs/convai-widget-embed" async type="text/javascript"></script>
